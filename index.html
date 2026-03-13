@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Place | bridge hair salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&family=Zen+Old+Mincho:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #faf7f4;
+  --bg2:   #f1ece8;
+  --ink:   #181410;
+  --ink2:  #3a2e2a;
+  --gold:  #b8953a;
+  --brown: #9e8076;
+  --white: #fdfaf6;
+  --line-green: #06C755;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem; height: 64px;
+  background: rgba(250,247,244,.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(184,149,58,.1);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; letter-spacing: .24em;
+  color: var(--ink); text-decoration: none; font-weight: 400;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .74rem; letter-spacing: .2em;
+  color: var(--ink2); text-decoration: none; transition: color .2s;
+}
+.nav-links a.active { color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+.nav-links a:hover { color: var(--gold); }
+
+/* ===== PAGE HERO — ダーク→ブラウン（フッターと統一） ===== */
+.page-hero {
+  margin-top: 64px;
+  padding: 3.8rem 4rem 3.4rem;
+  background: linear-gradient(to right, var(--ink) 0%, var(--ink) 40%, #9e8076 100%);
+  position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, rgba(184,149,58,.5) 0%, rgba(184,149,58,.1) 60%, transparent 100%);
+}
+.page-hero-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.4rem; font-weight: 300;
+  color: var(--white); letter-spacing: .16em; line-height: 1; display: block;
+}
+.page-hero-ja {
+  font-family: 'Noto Serif JP', serif;
+  font-size: .74rem; font-weight: 200;
+  color: rgba(253,250,246,.45); letter-spacing: .32em;
+  margin-top: .85rem; display: block;
+}
+
+/* ===== BODY ===== */
+.page-body { max-width: 780px; margin: 0 auto; padding: 5rem 2rem 8rem; }
+
+/* ===== INTRO ===== */
+.intro {
+  text-align: center; margin-bottom: 5rem;
+  padding-bottom: 4rem; border-bottom: 1px solid rgba(184,149,58,.15);
+}
+.intro-p {
+  font-family: 'Noto Serif JP', serif;
+  font-size: .86rem; color: var(--ink2); line-height: 2.9; letter-spacing: .1em;
+}
+.intro-note {
+  display: inline-block; margin-top: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .72rem; letter-spacing: .32em; color: var(--gold);
+  border: 1px solid rgba(184,149,58,.3); padding: .38rem 1.3rem;
+}
+.intro-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .78rem; letter-spacing: .1em;
+  color: rgba(58,46,42,.45); font-style: italic;
+}
+
+/* ===== OSAKA — メイン拠点: 大きく見せる ===== */
+.osaka-wrap { margin-bottom: 5.5rem; }
+
+.osaka-header {
+  margin-bottom: 2.6rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(184,149,58,.2);
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.osaka-title-block {}
+.osaka-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 300;
+  color: var(--ink); letter-spacing: .1em; line-height: 1;
+  display: block;
+}
+.osaka-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .78rem; letter-spacing: .22em; color: var(--brown);
+  margin-top: .4rem; display: block;
+}
+/* 曜日ビジュアル */
+.day-strip {
+  display: flex; gap: .28rem; align-items: center;
+}
+.day-chip {
+  width: 34px; height: 42px; border-radius: 5px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1px;
+  border: 1px solid rgba(158,128,118,.2);
+  color: rgba(58,46,42,.25); background: transparent;
+}
+.day-chip em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: normal; font-size: .58rem; letter-spacing: .02em; line-height: 1;
+}
+.day-chip small {
+  font-family: 'Noto Serif JP', serif;
+  font-size: .46rem; line-height: 1; opacity: .65;
+}
+.day-chip.open {
+  background: var(--brown); border-color: var(--brown); color: #fff;
+}
+.day-chip.open small { opacity: .78; }
+.day-chip.closed {
+  background: transparent;
+  border-color: rgba(158,128,118,.13); color: rgba(58,46,42,.2);
+}
+.day-strip-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .58rem; letter-spacing: .18em; color: var(--brown);
+  margin-right: .3rem;
+}
+
+/* INFO TABLE */
+.info-table { display: flex; flex-direction: column; }
+.info-row {
+  display: grid; grid-template-columns: 88px 1fr;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid rgba(184,149,58,.08);
+  align-items: start;
+}
+.info-row:first-child { border-top: 1px solid rgba(184,149,58,.08); }
+.info-lbl {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .62rem; letter-spacing: .28em;
+  color: var(--gold); text-transform: uppercase; padding-top: .2rem;
+}
+.info-val {
+  font-family: 'Noto Serif JP', serif;
+  font-size: .84rem; color: var(--ink2); line-height: 2; letter-spacing: .06em;
+}
+.info-val small {
+  display: block; font-size: .74rem; color: var(--brown); margin-top: .25rem;
+}
+
+/* MAP BUTTON — モバイルでも押しやすいサイズ */
+.map-btn {
+  display: inline-flex; align-items: center; gap: .6rem;
+  margin-top: .7rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .72rem; letter-spacing: .2em; color: var(--ink2);
+  text-decoration: none;
+  border: 1px solid rgba(158,128,118,.38);
+  padding: .6rem 1.2rem;
+  transition: all .2s; width: fit-content;
+  min-height: 44px; /* タップ領域確保 */
+}
+.map-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,149,58,.04); }
+.map-btn svg { width: 13px; height: 13px; fill: none; stroke: var(--gold); stroke-width: 2; flex-shrink: 0; }
+
+/* ===== SECTION BREAK ===== */
+.section-break {
+  margin: 5rem 0 4.5rem;
+  position: relative; text-align: center;
+}
+.section-break::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px;
+  background: rgba(184,149,58,.15);
+}
+.section-break-inner {
+  position: relative; display: inline-block;
+  background: var(--bg); padding: 0 1.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .64rem; letter-spacing: .35em; color: rgba(184,149,58,.65);
+}
+
+/* ===== TOKYO ===== */
+.tokyo-wrap {}
+.tokyo-header {
+  display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1rem;
+}
+.tokyo-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 300;
+  color: var(--ink); letter-spacing: .1em;
+}
+.tokyo-badge {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .62rem; letter-spacing: .22em; color: var(--gold);
+  border: 1px solid rgba(184,149,58,.4); padding: .22rem .8rem;
+}
+.tokyo-note {
+  font-family: 'Noto Serif JP', serif;
+  font-size: .82rem; color: var(--ink2); line-height: 2.4;
+  letter-spacing: .07em; margin-bottom: 2.8rem;
+}
+
+/* TOKYO CARD */
+.t-card {
+  margin-bottom: 1rem;
+  border: 1px solid rgba(184,149,58,.1);
+  background: var(--bg2); overflow: hidden;
+}
+.t-card-head {
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,.025);
+  border-bottom: 1px solid rgba(184,149,58,.1);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .8rem;
+}
+.t-card-title {
+  display: flex; align-items: baseline; gap: .8rem;
+}
+.t-card-city {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem; font-weight: 300; letter-spacing: .16em; color: var(--ink);
+}
+.t-card-sep { color: rgba(184,149,58,.4); }
+.t-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .72rem; letter-spacing: .16em; color: var(--brown);
+}
+/* Tokyo曜日（小さめ・2段バイリンガル） */
+.day-strip-sm {
+  display: flex; gap: .2rem;
+}
+.day-chip-sm {
+  width: 26px; height: 32px; border-radius: 4px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1px;
+  border: 1px solid rgba(158,128,118,.15);
+  color: rgba(58,46,42,.22); background: transparent;
+}
+.day-chip-sm em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: normal; font-size: .5rem; line-height: 1;
+}
+.day-chip-sm small {
+  font-family: 'Noto Serif JP', serif;
+  font-size: .38rem; line-height: 1; opacity: .6;
+}
+.day-chip-sm.open {
+  background: rgba(158,128,118,.18);
+  border-color: rgba(158,128,118,.5);
+  color: var(--brown);
+}
+.day-chip-sm.open small { opacity: .75; }
+.day-chip-sm.closed {
+  color: rgba(58,46,42,.18);
+  border-color: rgba(158,128,118,.1);
+}
+
+.t-card-body { padding: 0 2rem; }
+.t-card-body .info-row { grid-template-columns: 80px 1fr; padding: 1rem 0; }
+.t-card-body .info-row:first-child { border-top: none; }
+
+/* ===== CTA ===== */
+.place-cta {
+  text-align: center; padding: 5rem 2rem;
+  border-top: 1px solid rgba(184,149,58,.15); margin-top: 3rem;
+}
+.cta-lead {
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 1.05rem; color: var(--ink); line-height: 2.3; margin-bottom: .5rem;
+}
+.cta-sub {
+  font-family: 'Noto Serif JP', serif;
+  font-size: .82rem; color: var(--ink2); line-height: 2.6; margin-bottom: 2.4rem;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: .85rem;
+  background: var(--line-green); color: #fff; text-decoration: none;
+  padding: 1.05rem 3.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .84rem; letter-spacing: .28em; transition: background .25s;
+  min-height: 52px;
+}
+.cta-btn:hover { background: #05b34c; }
+.cta-arrow { color: rgba(255,255,255,.7); transition: transform .2s; }
+.cta-btn:hover .cta-arrow { transform: translateX(5px); color: #fff; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: linear-gradient(to right, var(--ink) 0%, var(--ink) 40%, #9e8076 100%);
+  padding: 2.2rem 3rem; text-align: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; letter-spacing: .3em;
+  color: rgba(253,250,246,.45); display: block; margin-bottom: .4rem;
+}
+.footer-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .62rem; letter-spacing: .18em; color: rgba(253,250,246,.22);
+}
+
+/* ===== FLOATING SNS ===== */
+.sns-float {
+  position: fixed; bottom: 2rem; right: 1.8rem;
+  display: flex; flex-direction: column; gap: .75rem; z-index: 200;
+}
+.sns-btn {
+  width: 46px; height: 46px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; transition: transform .22s, opacity .22s;
+  box-shadow: 0 3px 14px rgba(0,0,0,.2);
+}
+.sns-btn:hover { transform: translateY(-3px); opacity: .88; }
+.sns-btn-line { background: var(--line-green); }
+.sns-btn-insta {
+  background: radial-gradient(circle at 30% 107%,
+    #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.sns-btn svg { width: 22px; height: 22px; fill: #fff; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 680px) {
+  nav { padding: 0 1.4rem; }
+  .nav-links { display: none; }
+
+  .page-hero { padding: 2.8rem 1.6rem 2.5rem; }
+  .page-hero-en { font-size: 2.8rem; }
+
+  .page-body { padding: 3.5rem 1.2rem 6rem; }
+
+  /* 大阪ヘッダー縦並び */
+  .osaka-header { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+
+  /* 曜日チップをやや大きく（タップしない・見るだけだが読みやすく） */
+  .day-chip { width: 36px; height: 44px; }
+
+  /* info-row */
+  .info-row { grid-template-columns: 72px 1fr; }
+  .t-card-body .info-row { grid-template-columns: 70px 1fr; }
+
+  /* 地図ボタン モバイルでフル幅 */
+  .map-btn { width: 100%; justify-content: center; padding: .8rem 1rem; }
+
+  .t-card-head { flex-direction: column; align-items: flex-start; gap: .7rem; padding: .9rem 1.2rem; }
+  .t-card-body { padding: 0 1.2rem; }
+  .t-card-name { font-size: .68rem; }
+
+  .place-cta { padding: 3.5rem 1rem; }
+  .cta-btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://hub.personalhairstylist.info" class="nav-logo">bridge</a>
+  <ul class="nav-links">
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Review</a></li>
+    <li><a href="#" class="active">Place</a></li>
+    <li><a href="#">Product</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <span class="page-hero-en">Place</span>
+  <span class="page-hero-ja">Access Guide</span>
+</div>
+
+<!-- BODY -->
+<div class="page-body">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p class="intro-p">
+      初めての方も、迷わずお越しいただけます。<br>
+      <span class="intro-en">Easy to find — first-timers welcome.</span><br><br>
+      完全予約制のため、当日のご来店はお受けできません。<br>
+      <span class="intro-en">By appointment only. Same-day walk-ins are not available.</span><br><br>
+      事前にLINEにてご予約をお願いします。<br>
+      <span class="intro-en">Please book in advance via LINE.</span>
+    </p>
+    <span class="intro-note">RESERVATION REQUIRED</span>
+  </div>
+
+  <!-- ===== OSAKA ===== -->
+  <div class="osaka-wrap">
+    <div class="osaka-header">
+      <div class="osaka-title-block">
+        <span class="osaka-en">Osaka</span>
+        <span class="osaka-sub">bridge &nbsp;·&nbsp; 北浜</span>
+      </div>
+      <!-- 曜日ビジュアル: 月火水木金土日 -->
+      <div>
+        <div class="day-strip">
+          <span class="day-strip-label">OPEN DAYS</span>
+          <span class="day-chip closed"><em>Mon</em><small>月</small></span>
+          <span class="day-chip open"><em>Tue</em><small>火</small></span>
+          <span class="day-chip open"><em>Wed</em><small>水</small></span>
+          <span class="day-chip open"><em>Thu</em><small>木</small></span>
+          <span class="day-chip open"><em>Fri</em><small>金</small></span>
+          <span class="day-chip open"><em>Sat</em><small>土</small></span>
+          <span class="day-chip closed"><em>Sun</em><small>日</small></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-table">
+      <div class="info-row">
+        <span class="info-lbl">Address</span>
+        <div>
+          <div class="info-val">
+            大阪市中央区高麗橋2-5-10<br>
+            オーバンビル 2F&nbsp;&nbsp;re:cloud
+          </div>
+          <a href="https://www.google.com/maps/place/%E3%80%90bridge%E3%80%91Hair+salon+Osaka+%E5%8C%97%E6%B5%9C%E3%83%BB%E6%B7%80%E5%B1%8B%E6%A9%8B+%E7%BE%8E%E5%AE%B9%E9%99%A2+English+OK/@34.6899582,135.4991342,17z/data=!3m2!4b1!5s0x6000e6e15f57ca21:0x3e001874e32ed447!4m6!3m5!1s0x6000e74b49090725:0xc3b5cf9a13efcbcb!8m2!3d34.6899583!4d135.5040051!16s%2Fg%2F11kj12xlnt?entry=ttu&g_ep=EgoyMDI2MDMxMC4wIKXMDSoASAFQAw%3D%3D"
+             target="_blank" rel="noopener" class="map-btn">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            MAP
+          </a>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-lbl">Access</span>
+        <div class="info-val">
+          淀屋橋駅（御堂筋線・京阪本線）徒歩5分<br>
+          北浜駅（堺筋線・京阪本線）徒歩5分
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-lbl">Open</span>
+        <div class="info-val">
+          火曜日 〜 土曜日
+          <small>日曜・月曜 定休</small>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-lbl">Parking</span>
+        <div class="info-val">
+          専用駐車場はございません。
+          <small>近隣のコインパーキングをご利用ください。</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION BREAK -->
+  <div class="section-break">
+    <span class="section-break-inner">TOKYO &nbsp;&nbsp;·&nbsp;&nbsp; 出張施術</span>
+  </div>
+
+  <!-- ===== TOKYO ===== -->
+  <div class="tokyo-wrap">
+    <div class="tokyo-header">
+      <span class="tokyo-en">Tokyo</span>
+      <span class="tokyo-badge">出張施術 &nbsp;·&nbsp; Visiting</span>
+    </div>
+    <p class="tokyo-note">
+      2ヶ月に1度、東京・神奈川でも施術しています。<br>
+      <span class="intro-en">Visiting Tokyo &amp; Kanagawa approximately every two months.</span><br>
+      スケジュールはInstagramまたはLINEにてご確認ください。<br>
+      <span class="intro-en">Check the latest schedule on Instagram or LINE.</span>
+    </p>
+
+    <!-- GINZA -->
+    <div class="t-card">
+      <div class="t-card-head">
+        <div class="t-card-title">
+          <span class="t-card-city">Tokyo</span>
+          <span class="t-card-sep">—</span>
+          <span class="t-card-name">THE GARDEN Tokyo &nbsp;·&nbsp; GINZA</span>
+        </div>
+        <div class="day-strip-sm">
+          <span class="day-chip-sm open"><em>Mo</em><small>月</small></span>
+          <span class="day-chip-sm open"><em>Tu</em><small>火</small></span>
+          <span class="day-chip-sm open"><em>We</em><small>水</small></span>
+          <span class="day-chip-sm open"><em>Th</em><small>木</small></span>
+          <span class="day-chip-sm open"><em>Fr</em><small>金</small></span>
+          <span class="day-chip-sm closed"><em>Sa</em><small>土</small></span>
+          <span class="day-chip-sm closed"><em>Su</em><small>日</small></span>
+        </div>
+      </div>
+      <div class="t-card-body info-table">
+        <div class="info-row">
+          <span class="info-lbl">Address</span>
+          <div>
+            <div class="info-val">東京都中央区銀座7-9-15&nbsp;&nbsp;GINZAgCUBE 11F</div>
+            <a href="https://www.google.com/maps/place/%E3%80%90bridge%E3%80%91Hair+salon+Ginza+Tokyo+%E9%8A%80%E5%BA%A7+%E7%BE%8E%E5%AE%B9%E9%99%A2+English+OK/@35.6687457,139.7579411,17z/data=!3m2!4b1!5s0x60188be62af92869:0x476860a5812f4271!4m6!3m5!1s0x60188b202dcb4411:0xa774817dcdd67fed!8m2!3d35.6687458!4d139.762812!16s%2Fg%2F11kj4w_s69?entry=ttu&g_ep=EgoyMDI2MDMxMC4wIKXMDSoASAFQAw%3D%3D"
+               target="_blank" rel="noopener" class="map-btn">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              MAP
+            </a>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">Access</span>
+          <div class="info-val">銀座駅（丸の内線・日比谷線・銀座線）徒歩10分</div>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">Open</span>
+          <div class="info-val">月曜日 〜 金曜日</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JIYUGAOKA -->
+    <div class="t-card">
+      <div class="t-card-head">
+        <div class="t-card-title">
+          <span class="t-card-city">Tokyo</span>
+          <span class="t-card-sep">—</span>
+          <span class="t-card-name">Watai &nbsp;·&nbsp; JIYUGAOKA</span>
+        </div>
+        <div class="day-strip-sm">
+          <span class="day-chip-sm closed"><em>Mo</em><small>月</small></span>
+          <span class="day-chip-sm closed"><em>Tu</em><small>火</small></span>
+          <span class="day-chip-sm closed"><em>We</em><small>水</small></span>
+          <span class="day-chip-sm closed"><em>Th</em><small>木</small></span>
+          <span class="day-chip-sm closed"><em>Fr</em><small>金</small></span>
+          <span class="day-chip-sm open"><em>Sa</em><small>土</small></span>
+          <span class="day-chip-sm open"><em>Su</em><small>日</small></span>
+        </div>
+      </div>
+      <div class="t-card-body info-table">
+        <div class="info-row">
+          <span class="info-lbl">Address</span>
+          <div>
+            <div class="info-val">東京都目黒区緑が丘2丁目25-7&nbsp;&nbsp;ラ・クール自由が丘 B棟2F</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%9B%AE%E9%BB%92%E5%8C%BA%E7%B7%91%E3%81%8C%E4%B8%982-25-7"
+               target="_blank" rel="noopener" class="map-btn">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              MAP
+            </a>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">Access</span>
+          <div class="info-val">自由が丘駅（東急東横線・大井町線）徒歩3分</div>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">Open</span>
+          <div class="info-val">土曜日・日曜日</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MUSASHI-KOSUGI -->
+    <div class="t-card">
+      <div class="t-card-head">
+        <div class="t-card-title">
+          <span class="t-card-city">Kanagawa</span>
+          <span class="t-card-sep">—</span>
+          <span class="t-card-name">NEUTRAL produce by GARDEN</span>
+        </div>
+        <div class="day-strip-sm">
+          <span class="day-chip-sm open"><em>Mo</em><small>月</small></span>
+          <span class="day-chip-sm open"><em>Tu</em><small>火</small></span>
+          <span class="day-chip-sm open"><em>We</em><small>水</small></span>
+          <span class="day-chip-sm open"><em>Th</em><small>木</small></span>
+          <span class="day-chip-sm open"><em>Fr</em><small>金</small></span>
+          <span class="day-chip-sm closed"><em>Sa</em><small>土</small></span>
+          <span class="day-chip-sm closed"><em>Su</em><small>日</small></span>
+        </div>
+      </div>
+      <div class="t-card-body info-table">
+        <div class="info-row">
+          <span class="info-lbl">Address</span>
+          <div>
+            <div class="info-val">神奈川県川崎市中原区新丸子東3-1135&nbsp;&nbsp;GRAND TREE 2F</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=%E5%B7%9D%E5%B4%8E%E5%B8%82%E4%B8%AD%E5%8E%9F%E5%8C%BA%E6%96%B0%E4%B8%B8%E5%AD%90%E6%9D%B13-1135+GRAND+TREE"
+               target="_blank" rel="noopener" class="map-btn">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              MAP
+            </a>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">Access</span>
+          <div class="info-val">武蔵小杉駅（東横線・南武線・横須賀線）徒歩4分</div>
+        </div>
+        <div class="info-row">
+          <span class="info-lbl">Open</span>
+          <div class="info-val">
+            平日・祝日
+            <small>※ 出張スケジュールはSNSまたはLINEでご確認ください。</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /tokyo-wrap -->
+
+  <!-- CTA -->
+  <div class="place-cta">
+    <p class="cta-lead">ご予約・場所のご不明点はLINEへ</p>
+    <p class="cta-sub">
+      「はじめまして」のひと言から始まります。<br>
+      <span class="intro-en">Start with a simple "hello."</span><br>
+      お気軽にご連絡ください。
+    </p>
+    <a href="https://lin.ee/KR1qGTc" target="_blank" rel="noopener" class="cta-btn">
+      LINEで相談する
+      <span class="cta-arrow">&#8594;</span>
+    </a>
+  </div>
+
+</div><!-- /page-body -->
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">bridge</span>
+  <span class="footer-copy">&#169; bridge personal hair salon &mdash; Discover Your Sanctuary</span>
+</footer>
+
+<!-- FLOATING SNS -->
+<div class="sns-float">
+  <a href="https://lin.ee/KR1qGTc" target="_blank" rel="noopener"
+     class="sns-btn sns-btn-line" aria-label="LINE">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+    </svg>
+  </a>
+  <a href="https://www.instagram.com/takahair_bridge/" target="_blank" rel="noopener"
+     class="sns-btn sns-btn-insta" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+    </svg>
+  </a>
+</div>
+
+</body>
+</html>
