@@ -715,7 +715,7 @@ window._br=function(nav,ft){
   var ef=document.querySelector('footer');
   if(ef){ef.parentNode.replaceChild(nf,ef);}else{document.body.appendChild(nf);}
   /* hide old floats */
-  document.querySelectorAll('.floating-icons,.floats,[class*="float"]').forEach(function(el){if(!el.classList.contains('brfl')&&!el.classList.contains('brfls'))el.style.display='none';});
+  document.querySelectorAll('.floating-icons,.floats,.sns-float,[class*="float"]').forEach(function(el){if(!el.classList.contains('brfl')&&!el.classList.contains('brfls'))el.style.display='none';});
   /* FLOATS */
   var fl=document.createElement('div');fl.className='brfls';
   fl.innerHTML='<a href="https://lin.ee/KR1qGTc" class="brfl brfl-ln" target="_blank" rel="noopener" aria-label="LINE">'+LN+'</a>'+
