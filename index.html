@@ -346,6 +346,31 @@ footer {
 }
 .sns-btn svg { width: 22px; height: 22px; fill: #fff; }
 
+/* ===== LANG TOGGLE ===== */
+.lang-toggle {
+  position: fixed; top: 16px; right: 1.6rem; z-index: 300;
+  display: flex; align-items: center;
+  border: 1px solid rgba(184,149,58,.35);
+  overflow: hidden; background: rgba(250,247,244,.92);
+  backdrop-filter: blur(12px);
+}
+.lang-btn {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .6rem; letter-spacing: .22em;
+  padding: .38rem .85rem; background: none; border: none;
+  cursor: pointer; color: var(--brown); transition: all .2s;
+  line-height: 1;
+}
+.lang-btn.active { background: var(--gold); color: #fff; }
+.lang-btn:not(.active):hover { color: var(--gold); }
+
+.en-only { display: none; }
+body.en .en-only { display: block; }
+body.en .ja-only { display: none; }
+span.en-only { display: inline; }
+body.en span.en-only { display: inline; }
+body.en span.ja-only { display: none; }
+
 /* ===== MOBILE ===== */
 @media (max-width: 680px) {
   nav { padding: 0 1.4rem; }
@@ -380,6 +405,12 @@ footer {
 </head>
 <body>
 
+<!-- LANG TOGGLE -->
+<div class="lang-toggle">
+  <button class="lang-btn active" id="btn-ja" onclick="setLang('ja')">JA</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="https://hub.personalhairstylist.info" class="nav-logo">bridge</a>
@@ -404,12 +435,14 @@ footer {
   <!-- INTRO -->
   <div class="intro">
     <p class="intro-p">
-      初めての方も、迷わずお越しいただけます。<br>
-      <span class="intro-en">Easy to find — first-timers welcome.</span><br><br>
-      完全予約制のため、当日のご来店はお受けできません。<br>
-      <span class="intro-en">By appointment only. Same-day walk-ins are not available.</span><br><br>
-      事前にLINEにてご予約をお願いします。<br>
-      <span class="intro-en">Please book in advance via LINE.</span>
+      <span class="ja-only">初めての方も、迷わずお越しいただけます。</span>
+      <span class="en-only">Easy to find — first-timers welcome.</span>
+      <br><br>
+      <span class="ja-only">完全予約制のため、当日のご来店はお受けできません。</span>
+      <span class="en-only">By appointment only. Same-day walk-ins are not available.</span>
+      <br><br>
+      <span class="ja-only">事前にLINEにてご予約をお願いします。</span>
+      <span class="en-only">Please book in advance via LINE.</span>
     </p>
     <span class="intro-note">RESERVATION REQUIRED</span>
   </div>
@@ -454,22 +487,28 @@ footer {
       <div class="info-row">
         <span class="info-lbl">Access</span>
         <div class="info-val">
-          淀屋橋駅（御堂筋線・京阪本線）徒歩5分<br>
-          北浜駅（堺筋線・京阪本線）徒歩5分
+          <span class="ja-only">淀屋橋駅（御堂筋線・京阪本線）徒歩5分<br>
+          北浜駅（堺筋線・京阪本線）徒歩5分</span>
+          <span class="en-only">5 min walk from Yodoyabashi Station (Midosuji / Keihan Line)<br>
+          5 min walk from Kitahama Station (Sakaisuji / Keihan Line)</span>
         </div>
       </div>
       <div class="info-row">
         <span class="info-lbl">Open</span>
         <div class="info-val">
-          火曜日 〜 土曜日
-          <small>日曜・月曜 定休</small>
+          <span class="ja-only">火曜日 〜 土曜日
+          <small>日曜・月曜 定休</small></span>
+          <span class="en-only">Tuesday — Saturday
+          <small>Closed Sunday &amp; Monday</small></span>
         </div>
       </div>
       <div class="info-row">
         <span class="info-lbl">Parking</span>
         <div class="info-val">
-          専用駐車場はございません。
-          <small>近隣のコインパーキングをご利用ください。</small>
+          <span class="ja-only">専用駐車場はございません。
+          <small>近隣のコインパーキングをご利用ください。</small></span>
+          <span class="en-only">No dedicated parking available.
+          <small>Please use a nearby coin parking lot.</small></span>
         </div>
       </div>
     </div>
@@ -484,13 +523,13 @@ footer {
   <div class="tokyo-wrap">
     <div class="tokyo-header">
       <span class="tokyo-en">Tokyo</span>
-      <span class="tokyo-badge">出張施術 &nbsp;·&nbsp; Visiting</span>
+      <span class="tokyo-badge"><span class="ja-only">出張施術 &nbsp;·&nbsp; Visiting</span><span class="en-only">Visiting</span></span>
     </div>
     <p class="tokyo-note">
-      2ヶ月に1度、東京・神奈川でも施術しています。<br>
-      <span class="intro-en">Visiting Tokyo &amp; Kanagawa approximately every two months.</span><br>
-      スケジュールはInstagramまたはLINEにてご確認ください。<br>
-      <span class="intro-en">Check the latest schedule on Instagram or LINE.</span>
+      <span class="ja-only">2ヶ月に1度、東京・神奈川でも施術しています。<br>
+      スケジュールはInstagramまたはLINEにてご確認ください。</span>
+      <span class="en-only">Visiting Tokyo &amp; Kanagawa approximately every two months.<br>
+      Check the latest schedule on Instagram or LINE.</span>
     </p>
 
     <!-- GINZA -->
@@ -525,11 +564,17 @@ footer {
         </div>
         <div class="info-row">
           <span class="info-lbl">Access</span>
-          <div class="info-val">銀座駅（丸の内線・日比谷線・銀座線）徒歩10分</div>
+          <div class="info-val">
+            <span class="ja-only">銀座駅（丸の内線・日比谷線・銀座線）徒歩10分</span>
+            <span class="en-only">10 min walk from Ginza Station (Marunouchi / Hibiya / Ginza Line)</span>
+          </div>
         </div>
         <div class="info-row">
           <span class="info-lbl">Open</span>
-          <div class="info-val">月曜日 〜 金曜日</div>
+          <div class="info-val">
+            <span class="ja-only">月曜日 〜 金曜日</span>
+            <span class="en-only">Monday — Friday</span>
+          </div>
         </div>
       </div>
     </div>
@@ -566,11 +611,17 @@ footer {
         </div>
         <div class="info-row">
           <span class="info-lbl">Access</span>
-          <div class="info-val">自由が丘駅（東急東横線・大井町線）徒歩3分</div>
+          <div class="info-val">
+            <span class="ja-only">自由が丘駅（東急東横線・大井町線）徒歩3分</span>
+            <span class="en-only">3 min walk from Jiyugaoka Station (Tokyu Toyoko / Oimachi Line)</span>
+          </div>
         </div>
         <div class="info-row">
           <span class="info-lbl">Open</span>
-          <div class="info-val">土曜日・日曜日</div>
+          <div class="info-val">
+            <span class="ja-only">土曜日・日曜日</span>
+            <span class="en-only">Saturday &amp; Sunday</span>
+          </div>
         </div>
       </div>
     </div>
@@ -607,13 +658,18 @@ footer {
         </div>
         <div class="info-row">
           <span class="info-lbl">Access</span>
-          <div class="info-val">武蔵小杉駅（東横線・南武線・横須賀線）徒歩4分</div>
+          <div class="info-val">
+            <span class="ja-only">武蔵小杉駅（東横線・南武線・横須賀線）徒歩4分</span>
+            <span class="en-only">4 min walk from Musashi-Kosugi Station (Toyoko / Nambu / Yokosuka Line)</span>
+          </div>
         </div>
         <div class="info-row">
           <span class="info-lbl">Open</span>
           <div class="info-val">
-            平日・祝日
-            <small>※ 出張スケジュールはSNSまたはLINEでご確認ください。</small>
+            <span class="ja-only">平日・祝日
+            <small>※ 出張スケジュールはSNSまたはLINEでご確認ください。</small></span>
+            <span class="en-only">Weekdays &amp; National Holidays
+            <small>※ Check visiting schedule on Instagram or LINE.</small></span>
           </div>
         </div>
       </div>
@@ -623,14 +679,19 @@ footer {
 
   <!-- CTA -->
   <div class="place-cta">
-    <p class="cta-lead">ご予約・場所のご不明点はLINEへ</p>
+    <p class="cta-lead">
+      <span class="ja-only">ご予約・場所のご不明点はLINEへ</span>
+      <span class="en-only">Questions about booking or location? Message us on LINE.</span>
+    </p>
     <p class="cta-sub">
-      「はじめまして」のひと言から始まります。<br>
-      <span class="intro-en">Start with a simple "hello."</span><br>
-      お気軽にご連絡ください。
+      <span class="ja-only">「はじめまして」のひと言から始まります。<br>
+      お気軽にご連絡ください。</span>
+      <span class="en-only">Start with a simple "hello."<br>
+      No question is too small.</span>
     </p>
     <a href="https://lin.ee/KR1qGTc" target="_blank" rel="noopener" class="cta-btn">
-      LINEで相談する
+      <span class="ja-only">LINEで相談する</span>
+      <span class="en-only">Chat on LINE</span>
       <span class="cta-arrow">&#8594;</span>
     </a>
   </div>
@@ -732,7 +793,22 @@ window._br=function(nav,ft){
 </script>
   <script>window._br(
   [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-review/','Review',false],['https://takahair-bridge.github.io/bridge-place/','Place',true],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false]],
-  [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-lp/','LP',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-names/','Menu Names',false],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-review/','Review',false],['https://takahair-bridge.github.io/bridge-place/','Place',true],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false]]
+  [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-names/','Menu Names',false],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-review/','Review',false],['https://takahair-bridge.github.io/bridge-place/','Place',true],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false]]
 );</script>
+<script>
+function setLang(lang) {
+  document.body.classList.toggle('en', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang === 'en' ? 'en' : 'ja';
+  try { localStorage.setItem('bridge-lang', lang); } catch(e) {}
+}
+(function() {
+  try {
+    var saved = localStorage.getItem('bridge-lang');
+    if (saved === 'en') setLang('en');
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
