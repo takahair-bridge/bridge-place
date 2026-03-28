@@ -348,7 +348,7 @@ footer {
 
 /* ===== LANG TOGGLE ===== */
 .lang-toggle {
-  position: fixed; top: 16px; right: 1.6rem; z-index: 300;
+  position: fixed; top: 16px; right: clamp(64px,8vw,108px); z-index: 300;
   display: flex; align-items: center;
   border: 1px solid rgba(184,149,58,.35);
   overflow: hidden; background: rgba(250,247,244,.92);
@@ -414,13 +414,6 @@ body.en span.ja-only { display: none; }
 <!-- NAV -->
 <nav>
   <a href="https://hub.personalhairstylist.info" class="nav-logo">bridge</a>
-  <ul class="nav-links">
-    <li><a href="#">Menu</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Review</a></li>
-    <li><a href="#" class="active">Place</a></li>
-    <li><a href="#">Product</a></li>
-  </ul>
 </nav>
 
 <!-- PAGE HERO -->
@@ -442,7 +435,7 @@ body.en span.ja-only { display: none; }
       <span class="en-only">By appointment only. Same-day walk-ins are not available.</span>
       <br><br>
       <span class="ja-only">事前にLINEにてご予約をお願いします。</span>
-      <span class="en-only">Please book in advance via LINE.</span>
+      <span class="en-only">Please book in advance via Instagram.</span>
     </p>
     <span class="intro-note">RESERVATION REQUIRED</span>
   </div>
@@ -792,8 +785,8 @@ window._br=function(nav,ft){
 })();
 </script>
   <script>window._br(
-  [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-review/','Review',false],['https://takahair-bridge.github.io/bridge-place/','Place',true],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false]],
-  [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-names/','Menu Names',false],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-review/','Review',false],['https://takahair-bridge.github.io/bridge-place/','Place',true],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false]]
+  [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-Products/','Products',false],['https://takahair-bridge.github.io/bridge-review/','Review',false],['https://takahair-bridge.github.io/bridge-place/','Place',true],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false]],
+  [['https://hub.personalhairstylist.info','Information',false],['https://takahair-bridge.github.io/bridge-menu/','Menu',false],['https://takahair-bridge.github.io/bridge-Products/','Products',false],['https://takahair-bridge.github.io/bridge-review/','Review',false],['https://takahair-bridge.github.io/bridge-place/','Place',true],['https://takahair-bridge.github.io/bridge-profile/','Profile',false],['https://takahair-bridge.github.io/bridge-diagnosis/index.html','Diagnosis',false],['https://takahair-bridge.github.io/bridge-FAQ/','FAQ',false]]
 );</script>
 <script>
 function setLang(lang) {
