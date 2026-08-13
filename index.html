@@ -309,6 +309,14 @@ nav {
   min-height: 52px;
 }
 .cta-btn:hover { background: #05b34c; }
+/* ★2026-08-13 追加：英語圏の窓口はInstagram（LINEが使えないため）。
+   日本語=LINEボタン／英語=Instagramボタンを、言語切替で出し分ける。 */
+a.cta-btn.ja-only { display: inline-flex; }
+a.cta-btn.en-only { display: none; }
+body.en a.cta-btn.ja-only { display: none; }
+body.en a.cta-btn.en-only { display: inline-flex; }
+.cta-btn-ig { background: linear-gradient(45deg,#F58529,#DD2A7B 55%,#8134AF); }
+.cta-btn-ig:hover { background: linear-gradient(45deg,#F58529,#DD2A7B 40%,#8134AF); opacity:.92; }
 .cta-arrow { color: rgba(255,255,255,.7); transition: transform .2s; }
 .cta-btn:hover .cta-arrow { transform: translateX(5px); color: #fff; }
 
@@ -522,7 +530,7 @@ body.en span.ja-only { display: none; }
       <span class="ja-only">2ヶ月に1度、東京・神奈川でも施術しています。<br>
       スケジュールはInstagramまたはLINEにてご確認ください。</span>
       <span class="en-only">Visiting Tokyo &amp; Kanagawa approximately every two months.<br>
-      Check the latest schedule on Instagram or LINE.</span>
+      Check the latest schedule on Instagram.</span>
     </p>
 
     <!-- GINZA -->
@@ -662,7 +670,7 @@ body.en span.ja-only { display: none; }
             <span class="ja-only">平日・祝日
             <small>※ 出張スケジュールはSNSまたはLINEでご確認ください。</small></span>
             <span class="en-only">Weekdays &amp; National Holidays
-            <small>※ Check visiting schedule on Instagram or LINE.</small></span>
+            <small>※ Check visiting schedule on Instagram.</small></span>
           </div>
         </div>
       </div>
@@ -674,7 +682,7 @@ body.en span.ja-only { display: none; }
   <div class="place-cta">
     <p class="cta-lead">
       <span class="ja-only">ご予約・場所のご不明点はLINEへ</span>
-      <span class="en-only">Questions about booking or location? Message us on LINE.</span>
+      <span class="en-only">Questions about booking or location? Send us a DM on Instagram.</span>
     </p>
     <p class="cta-sub">
       <span class="ja-only">「はじめまして」のひと言から始まります。<br>
@@ -682,9 +690,12 @@ body.en span.ja-only { display: none; }
       <span class="en-only">Start with a simple "hello."<br>
       No question is too small.</span>
     </p>
-    <a href="https://lin.ee/KR1qGTc" target="_blank" rel="noopener" class="cta-btn">
-      <span class="ja-only">LINEで相談する</span>
-      <span class="en-only">Chat on LINE</span>
+    <a href="https://lin.ee/KR1qGTc" target="_blank" rel="noopener" class="cta-btn ja-only">
+      LINEで相談する
+      <span class="cta-arrow">&#8594;</span>
+    </a>
+    <a href="https://www.instagram.com/takahair_bridge/" target="_blank" rel="noopener" class="cta-btn cta-btn-ig en-only">
+      Message us on Instagram
       <span class="cta-arrow">&#8594;</span>
     </a>
   </div>
