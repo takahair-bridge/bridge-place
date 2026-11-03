@@ -457,7 +457,7 @@ footer {
 .en-only { display: none; }
 body.en .en-only { display: block; }
 body.en .ja-only { display: none; }
-span.en-only { display: inline; }
+span.en-only { display: none; } /* 日本語表示で英語の span が出ていたのを止める（LP v2.10 と同じ直し） */
 body.en span.en-only { display: inline; }
 body.en span.ja-only { display: none; }
 
